@@ -31,6 +31,10 @@
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
+
+    @media (max-width: 380px) {
+      width: 220px;
+    }
   }
   button {
     background-color: #53e3a6;
