@@ -1,0 +1,151 @@
+@import "../../style/variables";
+@import "../../style/mixins";
+@import "../../style/fonts";
+
+.artist-card {
+  background-color: $color-card-background;
+  border-radius: $default-border-radius;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 920px;
+  min-height: 40px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  color: $color-body-copy;
+  font: {
+    family: 'Roboto', sans-serif;
+    size: 100%;
+    weight: 300;
+  }
+  line-height: 1.5;
+
+  @media #{$breakpoint-medium} {
+    flex-direction: row;
+  }
+  .loader-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    svg {
+      display: block;
+    }
+    svg path,
+    svg rect {
+      fill: $color-anchor;
+    }
+  }
+}
+
+.artist-photo {
+  background-position: center;
+  background-size: cover;
+  border-top-left-radius: $default-border-radius;
+  border-top-right-radius: $default-border-radius;
+  min-height: 250px;
+
+  @media #{$breakpoint-medium} {
+    border-top-left-radius: $default-border-radius;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: $default-border-radius;
+    width: 50%;
+  }
+}
+
+.artist-details {
+  padding: 2.1875em 5%;
+
+  @media #{$breakpoint-medium} {
+    width: 50%;
+  }
+
+  h1, h4 {
+    color: #fff;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 125%;
+    line-height: 1;
+    margin-bottom: 0.35em;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-size: 62.5%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}
+
+.artist-genre{
+  color: $color-body-copy;
+  display: block;
+  font-size: 62.5%;
+  text-transform: uppercase;
+  padding-bottom: 1.375em;
+
+  a {
+    color: $color-anchor;
+  }
+}
+
+.events-list {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.event {
+  text-align: left;
+}
+
+.music-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.375em;
+  margin-top: 1.375em;
+
+  .album,
+  .song {
+    width: 48.75%;
+  }
+
+  ul {
+    @include list-reset;
+    font-size: 87.5%;
+  }
+}
+
+.social-links {
+  ul {
+    @include list-reset;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 87.5%;
+    margin-top: 0.35em;
+    text-transform: lowercase;
+    justify-content: center;
+  }
+
+  li {
+    margin: 0 0.35em 0.35em 0;
+  }
+
+  a {
+    background-color: $color-tag-background;
+    border-radius: 50px;
+    color: #fff;
+    display: block;
+    padding: 0.3125em 1.25em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover, &:focus {
+      color: $color-anchor;
+    }
+  }
+}
