@@ -1,13 +1,14 @@
 import {
     FETCH_ARTIST, FETCH_ARTIST_COMPLETED,
-    FETCH_ARTIST_REJECTED
+    FETCH_ARTIST_REJECTED,
+    UPDATE_ARTIST_SEARCH_FORM
 } from "./actionTypes";
 
 const INITIAL_STATE = {
     artist: {},
     artistEvents: [],
-    searchArtistForm: {
-        artistName: "Dua Lipa"
+    artistSearchForm: {
+        artistName: ""
     },
     loadingArtistData: false
 };
@@ -20,6 +21,15 @@ export default function (state = INITIAL_STATE, action) {
             return {...state, loadingArtistData: false, artist: action.payload};
         case FETCH_ARTIST_REJECTED:
             return {...state, loadingArtistData: false, error: action.payload};
+
+        case UPDATE_ARTIST_SEARCH_FORM:
+            return {
+                ...state,
+                artistSearchForm: {
+                    ...state.artistSearchForm,
+                    ...action.payload
+                }
+            };
 
         default:
             return state;
