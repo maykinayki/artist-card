@@ -1,21 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./app.scss";
-import { getArtist } from "../../store/artist-store/selectors";
-import { requestArtist } from "../../store/artist-store/actionCreators";
+import { getArtist, getArtistSearchForm } from "../../store/artist-store/selectors";
+import {
+    requestArtist,
+    updateArtistSearchForm
+} from "../../store/artist-store/actionCreators";
+import ArtistSearchForm from "../ArtistSearchForm/ArtistSearchForm";
 
 class App extends Component {
-
-    componentDidMount() {
-        this.props.dispatch(requestArtist());
-    }
-
     render() {
         return (
             <div className="app">
-                <pre>
-                    {JSON.stringify(this.props.artist, null, 4)}
-                </pre>
+                <ArtistSearchForm
+                    {...this.props.artistSearchForm}
+                    onChange={(e) => {
+                        const target = e.target;
+                        const name = target.name;
+                        const value = target.value;
+                        this.props.dispatch(updateArtistSearchForm({
+                            [name]: value
+                        }))
+                    }}
+                    onSubmit={() => {
+                        this.props.dispatch(requestArtist());
+                    }}
+                />
             </div>
         );
     }
@@ -23,6 +33,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
+        artistSearchForm: getArtistSearchForm(state),
         artist: getArtist(state)
     };
 };
