@@ -1,0 +1,46 @@
+.auto-complete-dropdown {
+  position: fixed;
+  z-index: 99999;
+}
+
+.artist-search-form {
+  .form-item-group {
+    display: flex;
+  }
+  input {
+    display: block;
+    outline: 0;
+    border: 1px solid transparentize(#fff, 0.4);
+    background-color: transparentize(#fff, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    font: {
+      size: 1rem;
+    }
+
+    transition-duration: 0.25s;
+    font-weight: 300;
+
+    &:hover {
+      background-color: transparentize(#fff, 0.4);
+    }
+
+    &:focus {
+      background-color: white;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  button {
+    background-color: #53e3a6;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    min-width: 120px;
+    padding: 0;
+    font: {
+      size: 1rem;
+    }
+  }
+}
