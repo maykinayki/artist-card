@@ -18,7 +18,7 @@ export default function (state = INITIAL_STATE, action) {
         case FETCH_ARTIST:
             return {...state, loadingArtistData: true};
         case FETCH_ARTIST_COMPLETED:
-            return {...state, loadingArtistData: false, artist: action.payload};
+            return {...state, loadingArtistData: false, artist: action.payload.artist, artistEvents: action.payload.artistEvents};
         case FETCH_ARTIST_REJECTED:
             return {...state, loadingArtistData: false, error: action.payload};
 

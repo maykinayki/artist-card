@@ -10,13 +10,18 @@ export const requestArtist = () => {
         dispatch(fetchArtist());
         try {
             const params = getRequestAristParams(getState());
-            const response = await axiosClient.get(`/artists/${params.path.artistname}`, {
+            const artistResponse = await axiosClient.get(`/artists/${params.path.artistname}`, {
                 params: params.query
             });
-            dispatch(fetchArtistCompleted(response.data));
+            const artistEventsResponse = await axiosClient.get(`/artists/${params.path.artistname}/events`, {
+                params: params.query
+            });
+            dispatch(fetchArtistCompleted({
+                artist: artistResponse.data,
+                artistEvents: artistEventsResponse.data
+            }));
         } catch (error) {
-            console.log(error.response);
-            dispatch(fetchArtistRejected(error.response));
+            dispatch(fetchArtistRejected(error.response.data));
         }
     }
 };
@@ -46,4 +51,4 @@ export const updateArtistSearchForm = (payload) => {
         type: UPDATE_ARTIST_SEARCH_FORM,
         payload
     }
-}
+};
